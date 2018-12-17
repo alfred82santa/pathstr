@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from pathstr import Path
+from pathstr import Path, DotPath, PipePath, BackslashPath
 
 
 class PathTests(TestCase):
@@ -411,3 +411,27 @@ class PathTests(TestCase):
     def test_common_parent_both_empty_path(self):
         self.assertEqual(Path().common_parent(Path()),
                          Path())
+
+
+class DotPathTests(TestCase):
+
+    def test_build_from_single_string(self):
+        path = DotPath('path.to.nothing')
+
+        self.assertEqual(path.segments, ('path', 'to', 'nothing'))
+
+
+class PipePathTests(TestCase):
+
+    def test_build_from_single_string(self):
+        path = PipePath('path|to|nothing')
+
+        self.assertEqual(path.segments, ('path', 'to', 'nothing'))
+
+
+class BackslashPathTests(TestCase):
+
+    def test_build_from_single_string(self):
+        path = BackslashPath('path\\to\\nothing')
+
+        self.assertEqual(path.segments, ('path', 'to', 'nothing'))

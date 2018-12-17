@@ -1,7 +1,7 @@
 from itertools import chain
 from typing import Tuple, Union
 
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
 
 class Path:
@@ -156,3 +156,15 @@ class Path:
 
     def __reversed__(self) -> 'Path':
         return self.__class__(*reversed(self.segments))
+
+
+class DotPath(Path):
+    SEPARATOR = '.'
+
+
+class PipePath(Path):
+    SEPARATOR = '|'
+
+
+class BackslashPath(Path):
+    SEPARATOR = '\\'
