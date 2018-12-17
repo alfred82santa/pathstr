@@ -1,0 +1,19 @@
+language: python
+python:
+  - "3.6"
+  - "3.7"
+# command to install dependencies
+install:
+  - pip install -r requirements-test.txt
+  - pip install coveralls
+# command to run tests
+script:
+  - flake8 dirty_models
+  - flake8 tests
+  - nosetests --with-coverage -d --cover-package=pathstr
+
+after_success:
+  - coveralls --rcfile=.coveragerc
+
+cache: pip
+sudo: false
