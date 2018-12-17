@@ -73,7 +73,7 @@ class PathTests(TestCase):
     def test_in_string(self):
         self.assertIn('path/to/nothing', Path('path', 'to'))
 
-    def test_in_string(self):
+    def test_in_integer(self):
         self.assertNotIn(3, Path('path', 'to'))
 
     def test_startswith(self):
